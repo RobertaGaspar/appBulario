@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" id="search-form">
+        {% csrf_token %}
+        <div class="container-lg">
+            <p>
+            <h3 id="content">Medicamento</h3>
+            <input class="form-control" type="text" id="nomeMedicamento" name="nomeMedicamento"
+                   placeholder="Digite o nome do medicamento para consultar">
+            </p>
+            <div class="collapse" id="collapseExample">
+                <p>
+                <div class="row justify-content-between">
+                    <div class="col-6">
+                        <h3>Cnpj da Empresa</h3>
+                        <input class="form-control" type="text" id="cnpj" name="cnpj"
+                               placeholder="Digite o cnpj da empresa">
+                    </div>
+                    <div class="col-6">
+                        <h3>Número expediente</h3>
+                        <input class="form-control" type="text" id="numeroExpediente" name="numeroExpediente"
+                               placeholder="Digite o número do expediente">
+                    </div>
+                </div>
+                </p>
+                <p>
+                <div class="row justify-content-between">
+                <h3>Período de publicação</h3>
+                <div class="col-6">
+                        <input class="form-control" type="date" id="periodoInicial" name="periodoInicial" placeholder="Data Inicial">
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" type="date" id="periodoFinal" name="periodoFinal" placeholder="Data Final">
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </form>
+    <p>
+    <div class="container-md">
+        <a href="listing.html">
+            <button class="btn btn-primary">
+                Consultar
+            </button>
+        </a>
+        <button class="btn btn-primary" id="btn-collapse" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample" onclick="">
+            Refinar/Simplificar
+        </button>
+    </div>
+    </p>
+</div>
+{% endblock %}

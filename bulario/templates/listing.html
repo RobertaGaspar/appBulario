@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Medicamento</th>
+            <th scope="col">Empresa - CNPJ</th>
+            <th scope="col">Expediente</th>
+            <th scope="col">Data de Publicação</th>
+            <th scope="col">Bula do Paciente</th>
+            <th scope="col">Bula do profissional</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for indice, medicamento in medicamentos.items %}
+        <tr>
+            <th scope="row">{{ medicamento.nomeProduto }}</th>
+            <td>{{ medicamento.razaoSocial }} - {{medicamento.cnpj}}</td>
+            <td>{{ medicamento.expediente }}</td>
+            <td>{{ medicamento.data }}</td>
+            {% load static %}
+            <td>
+                <a href="https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNzc1NzA2OCIsIm5iZiI6MTY3MDI4Mjk3NCwiZXhwIjoxNjcwMjgzMjc0fQ.VLQUutDbLTjp88uGTXZgpnZUMZwtcMKyOZ1WGAEcEKln_XASC_DhQmpJDxdRQBLW94FaI5AJ5bttgZ959WJ-VA/?Authorization=">
+                    <img src="{% static 'img\pdf.png' %}">
+                </a>
+            </td>
+            <td>
+                <a href="https://consultas.anvisa.gov.br/api/consulta/medicamentos/arquivo/bula/parecer/eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxNzc1NzA2OSIsIm5iZiI6MTY3MDI4Mjk3NCwiZXhwIjoxNjcwMjgzMjc0fQ.g7g7y_oIFpEdQ88f3V8HQhqj04iWHnI02Cn8Lqhd-dYSQsHvQ4Aq-RSoP5ZWbZMUYlknGJ4styjjQPzfyE3gHg/?Authorization=">
+                    <img src="{% static 'img\pdf.png' %}">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="container-md">
+        <a href="search.html">
+            <button class="btn btn-primary">
+                Voltar
+            </button>
+        </a>
+    </div>
+</div>
+{% endblock %}
